@@ -28,7 +28,9 @@ Route::get('paises', function () {
             "ciudades" => [
                 "Ibagué",
                 "Medellin",
-                "Cali"
+                "Cali",
+                "Barrancabermeja",
+                "Armenia"
             ]
         ],
         "Peru" => [
@@ -46,9 +48,7 @@ Route::get('paises', function () {
             "mon" => "Guaraní paraguayo",
             "pob" => "7'133.000",
             "ciudades" => [
-                "Ciudad del Este",
-                "Encarnacion",
-                "Areguá"
+                "Ciudad del Este"
             ]
         ],
         "Ecuador" => [ 
@@ -67,7 +67,8 @@ Route::get('paises', function () {
             "ciudades" => [
                 "Sao Paulo",
                 "Rio de Janeiro",
-                "Belo Horizonte"
+                "Belo Horizonte",
+                "Fortaleza"
             ]   
         ]   
     ];
