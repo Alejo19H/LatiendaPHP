@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +22,8 @@ Route::get('/', function () {
 //Clase Route->metodo get
 Route::get('paises', function () {
     $paises = [
-        "Colombia" => [ 
-            "cap" => "Bogota", 
+        "Colombia" => [
+            "cap" => "Bogota",
             "mon" => "Peso Colombiano",
             "pob" => "50'880.000",
             "ciudades" => [
@@ -34,7 +35,7 @@ Route::get('paises', function () {
             ]
         ],
         "Peru" => [
-            "cap" => "Lima", 
+            "cap" => "Lima",
             "mon" => "Soles",
             "pob" => "32'970.000",
             "ciudades" => [
@@ -42,17 +43,17 @@ Route::get('paises', function () {
                 "Cusco",
                 "Arequipa"
             ]
-        ], 
+        ],
         "Paraguay" => [
-            "cap" => "Asuncion", 
+            "cap" => "Asuncion",
             "mon" => "Guaraní paraguayo",
             "pob" => "7'133.000",
             "ciudades" => [
                 "Ciudad del Este"
             ]
         ],
-        "Ecuador" => [ 
-            "cap" => "Quito", 
+        "Ecuador" => [
+            "cap" => "Quito",
             "mon" => "Dolar",
             "pob" => "17'400.000",
             "ciudades" => [
@@ -61,7 +62,7 @@ Route::get('paises', function () {
             ]
         ],
         "Brasil" => [
-            "cap" => "Brasilia", 
+            "cap" => "Brasilia",
             "mon" => "Reales",
             "pob" => "212'600.000",
             "ciudades" => [
@@ -69,13 +70,22 @@ Route::get('paises', function () {
                 "Rio de Janeiro",
                 "Belo Horizonte",
                 "Fortaleza"
-            ]   
-        ]   
+            ]
+        ]
     ];
 
-    return view('Paises') ->with('paises', $paises);
-}) ;
+    return view('Paises')->with('paises', $paises);
+});
 
 Route::get('prueba', function () {
     return view('productos.create');
 });
+
+/** 
+ * Rutas REST Productos
+ * 
+ */
+Route::resource(
+    'productos',
+    ProductosController::class
+);

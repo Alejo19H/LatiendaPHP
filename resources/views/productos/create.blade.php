@@ -1,47 +1,68 @@
 @extends ('layouts.principal')
 
 @section('contenido')
+    <div class="row">
+        <h1 class="grey-text  text-darken-4"> Nuevo Producto </h1>
 
-<div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-          <label for="disabled">Disabled</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-          This is an inline input field:
-          <div class="input-field inline">
-            <input id="email_inline" type="email" class="validate">
-            <label for="email_inline">Email</label>
-            <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-  @endsection('contenido')
+    </div>
+
+    <div class="row">
+        <form method="post" action="{{ url('productos') }}" class="col s12">
+            @csrf
+            <div class="row">
+                <div class="input-field col s8">
+                    <input id="nombre" type="text" class="validate" name="nombre">
+                    <label for="nombre">Nombre de Producto</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8">
+                    <textarea class="materialize-textarea" id="desc" name="desc"></textarea>
+                    <label for="desc">Descripcion</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8">
+                    <input id="precio" type="text" class="validate" name="precio">
+                    <label for="precio">Precio</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="file-field input-field col">
+                    <div class="btn">
+                        <span>Imagen Producto...</span>
+                        <input type="file" name="imagen">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8">
+                    <select name="marca">
+                        <option value="" disabled selected>Elija Marca</option>
+                        @foreach ($marcas as $marca)
+                            <option value="{{ $marca->id }}">{{ $marca->nombre }}</option>
+                        @endforeach
+                    </select>
+                    <label>Marcas Disponibles</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8">
+                    <select name="categoria">
+                        <option value="" disabled selected>Elija Categoria</option>
+                        @foreach ($categorias as $categoria)
+                            <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                        @endforeach
+                    </select>
+                    <label>Categorias Disponibles</label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-light" type="submit">Guardar</button>
+            </div>
+        </form>
+    </div>
+@endsection('contenido')
