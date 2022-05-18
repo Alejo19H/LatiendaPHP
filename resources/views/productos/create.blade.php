@@ -9,22 +9,33 @@
     <div class="row">
         <form method="post" action="{{ url('productos') }}" class="col s12">
             @csrf
+            @if(session('mensaje'))
+            <div class="row">
+                <div class="col s8">
+                    <span class="validate red-text text-lighten-1">
+                        {{ session('mensaje') }}
+                    </span>
+                </div>
+            @endif
             <div class="row">
                 <div class="input-field col s8">
                     <input id="nombre" type="text" class="validate" name="nombre">
                     <label for="nombre">Nombre de Producto</label>
+                    <span class="validate red-text text-lighten-1">{{ $errors->first('nombre') }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s8">
                     <textarea class="materialize-textarea" id="desc" name="desc"></textarea>
                     <label for="desc">Descripcion</label>
+                    <span class="validate red-text text-lighten-1">{{ $errors->first('desc') }}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s8">
                     <input id="precio" type="text" class="validate" name="precio">
                     <label for="precio">Precio</label>
+                    <span class="validate red-text text-lighten-1">{{ $errors->first('precio') }}</span>
                 </div>
             </div>
             <div class="row">
@@ -47,6 +58,7 @@
                         @endforeach
                     </select>
                     <label>Marcas Disponibles</label>
+                    <span class="validate red-text text-lighten-1">{{ $errors->first('marca') }}</span>
                 </div>
             </div>
             <div class="row">
@@ -58,6 +70,7 @@
                         @endforeach
                     </select>
                     <label>Categorias Disponibles</label>
+                    <span class="validate red-text text-lighten-1">{{ $errors->first('categoria') }}</span>
                 </div>
             </div>
             <div class="row">
