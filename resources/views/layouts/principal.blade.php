@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('materialize/css/materialize.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Document</title>
 </head>
 
 <body>
-    <nav class="purple accent-1">
+    <nav class="green darken-3">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo">LatiendaPHP</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -25,6 +26,10 @@
         <script src="{{ asset('materialize/js/materialize.js') }}"></script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
+                //Codigo de inicializacion de los tabs
+                let tabs = document.querySelector(".tabs")
+                var instance = M.Tabs.init(tabs);
+                //Codigo de inicializacion de los select
                 var elems = document.querySelectorAll('select');
                 var instances = M.FormSelect.init(elems, []);
             });

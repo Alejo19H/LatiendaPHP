@@ -21,7 +21,7 @@ class ProductosController extends Controller
         //Seleccionar todos los productos en un arreglo
         $productos = Productos::all();
         //Mostrar la vista  del catalogo, llevandole los productos
-        return view ('productos.index')->with('prouctos', $productos);
+        return view ('productos.index')->with('productos', $productos);
     }
 
     /**

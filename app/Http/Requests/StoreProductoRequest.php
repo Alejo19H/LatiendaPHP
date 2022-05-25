@@ -24,9 +24,9 @@ class StoreProductoRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombre" => 'required|alpha|unique:productos,nombre',
-            "desc" => 'required|max:100',
-            "precio" => 'required|numeric|max:10000',
+            "nombre" => 'required|unique:productos,nombre',
+            "desc" => 'required|max:1000000',
+            "precio" => 'required|numeric|max:90000000',
             "marca" => 'required',
             "categoria" => 'required',
             "imagen" => 'required|image'
@@ -41,7 +41,6 @@ class StoreProductoRequest extends FormRequest
      {
         return [
             'required' => 'Este campo es obligatorio',
-            'alpha' => 'Este campo solo permite letras',
             'max' => 'El campo solo permite maximo:max caracteres',
             'numeric' => 'Este campo solo permite numeros',
             'image' => 'El campo solo permite archivos de tipo imagen',
