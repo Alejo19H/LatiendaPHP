@@ -24,11 +24,12 @@ class StoreProductoRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombre" => 'required|alpha',
+            "nombre" => 'required|alpha|unique:productos,nombre',
             "desc" => 'required|max:100',
             "precio" => 'required|numeric|max:10000',
             "marca" => 'required',
-            "categoria" => 'required'
+            "categoria" => 'required',
+            "imagen" => 'required|image'
         ];
     }
 
@@ -42,7 +43,9 @@ class StoreProductoRequest extends FormRequest
             'required' => 'Este campo es obligatorio',
             'alpha' => 'Este campo solo permite letras',
             'max' => 'El campo solo permite maximo:max caracteres',
-            'numeric' => 'Este campo solo permite numeros'
+            'numeric' => 'Este campo solo permite numeros',
+            'image' => 'El campo solo permite archivos de tipo imagen',
+            'unique' => 'El producto ya existe en la base de datos'
         ];
      }
 }
