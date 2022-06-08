@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use App\Models\Marca;
-use App\Models\Productos;
+use App\Models\Producto;
 use App\Http\Requests\StoreProductoRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -19,7 +19,7 @@ class ProductosController extends Controller
     public function index()
     {
         //Seleccionar todos los productos en un arreglo
-        $productos = Productos::all();
+        $productos = Producto::all();
         //Mostrar la vista  del catalogo, llevandole los productos
         return view ('productos.index')->with('productos', $productos);
     }
@@ -50,7 +50,7 @@ class ProductosController extends Controller
     public function store(StoreProductoRequest $request)
     {
             //Validacion exitosa
-            $p = new Productos();
+            $p = new Producto();
             $p->nombre = $request->nombre;
             $p->desc = $request->desc;
             $p->precio = $request->precio;
@@ -77,7 +77,11 @@ class ProductosController extends Controller
      */
     public function show($productos)
     {
-        echo "Aqui va a mostrar el detalle del producto";
+        //Seleccionar el producto a mostrar
+        $p = Producto::find($productos);
+        //Mostrar el detalle del producto
+        //Enviandole el producto seleccionado
+        return view('productos.details')->with('producto', $p);
     }
 
     /**
@@ -98,7 +102,7 @@ class ProductosController extends Controller
      * @param  \App\Models\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Productos $productos)
+    public function update(Request $request, Producto $productos)
     {
         echo "Aqui se guarda el producto editado";
     }
@@ -109,7 +113,7 @@ class ProductosController extends Controller
      * @param  \App\Models\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Productos $productos)
+    public function destroy(Producto $productos)
     {
         echo "Aqui se van a eliminar los productos";
     }

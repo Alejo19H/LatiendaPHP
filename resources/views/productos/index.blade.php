@@ -5,12 +5,18 @@
         <div class="row">
             <h1> Catalogo de Productos</h1>
         </div>
+        @if(session('mensaje'))
+        <div class="row">
+            <p>{{ session('mensaje') }}</p>
+            <a href="{{ route('cart.index') }}">Ir al carrito</a>
+        </div>
+        @endif
         <div class="row">
             @foreach ($productos as $producto)
-                <div class="col s12 m3">
+                <div class="col s12 m5">
                     <div class="card">
                         <div class="card-image">
-                            <img class="activator" src="{{ asset('img/' . $producto->imagen) }}" width="500px"
+                            <img class="activator" src="{{ asset('img/' . $producto->imagen) }}" width="900px"
                                 height="300px">
                             <a class="btn-floating halfway-fab waves-effect waves-light red"><i
                                     class="material-icons">add</i></a>
@@ -20,21 +26,21 @@
                                     class="material-icons right">more_vert</i></span>
 
 
-                            <p><a href="#!">Ver Detalles/a></p>
+                            <p><a href="{{ route ('productos.show' , $producto->id) }}">Ver Detalles</a></p>
                         </div>
                         <div class="card-tabs">
                             <ul class="tabs tabs-fixed-width">
-                                <li class="tab"><a href="#test4" class="">Test 1</a></li>
-                                <li class="tab"><a class="active" href="#test5">Test 2</a></li>
-                                <li class="tab"><a href="#test6" class="">Test 3</a></li>
+                                <li class="tab"><a href="#test4" class="">Precio</a></li>
+                                <li class="tab"><a class="active" href="#test5">Categoria</a></li>
+                                <li class="tab"><a href="#test6" class="">Marca</a></li>
                                 <li class="indicator" style="left: 93px; right: 93px;"></li>
                             </ul>
                         </div>
 
                         <div class="card-content grey lighten-4">
-                            <div id="test4" style="display: none;" class="">Test 1</div>
-                            <div id="test5" class="active" style="display: block;">Test 2</div>
-                            <div id="test6" style="display: none;" class="">Test 3</div>
+                            <div id="test4" style="display: none;" class="">${{ $producto->precio }}</div>
+                            <div id="test5" class="active" style="display: block;">{{ $producto->categoria->nombre }}</div>
+                            <div id="test6" style="display: none;" class="">{{ $producto->marca->nombre }}</div>
                         </div>
 
                         <div class="card-reveal" style="display: none; transform: translateY(0%);">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductosController;
 use Illuminate\Support\Facades\Route;
 
@@ -88,4 +89,7 @@ Route::get('prueba', function () {
 Route::resource(
     'productos',
     ProductosController::class
+);
+Route::resource(
+    'cart', CartController::class, [ 'only' => [ 'index' , 'store' , 'destroy' ]]
 );
